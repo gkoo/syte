@@ -1,15 +1,15 @@
 var $url;
 
 var allComponents = [
-  'instagram',
+  //'instagram',
   'twitter',
   'github',
-  'dribbble',
-  'lastfm',
-  'soundcloud',
-  'bitbucket',
-  'foursquare',
-  'tent'
+  //'dribbble',
+  //'lastfm',
+  //'soundcloud',
+  //'bitbucket',
+  //'foursquare',
+  //'tent'
 ];
 
 function setupLinks() {
