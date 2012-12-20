@@ -1,7 +1,7 @@
 var $url;
 
 var allComponents = [
-  //'instagram',
+  'instagram',
   'twitter',
   'github',
   //'dribbble',
