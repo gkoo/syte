@@ -114,6 +114,6 @@ if DEPLOYMENT_MODE == 'dev':
     DEBUG = True
 else:
     DEBUG = False
-    SITE_ROOT_URI = '[ENTER PROD URL HERE] ex. http://rigoneri.herokuapp.com/'
+    SITE_ROOT_URI = 'http://sleepy-plains-7049.herokuapp.com/'
 
 MEDIA_URL = SITE_ROOT_URI + 'static/'
