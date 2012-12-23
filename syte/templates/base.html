@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="description" content="Personal website and blog of developer, designer and entrepreneur Rodrigo Neri also known as Rigo. Follow him at @rigoneri" />
-  <meta name="keywords" content="Rodrigo Neri, rigoneri, developer, designer, entrepreneur, instin, myhomework" />
+  <meta name="description" content="Personal website of Gordon Koo: software developer, musician, weirdo." />
+  <meta name="keywords" content="Gordon Koo" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block pagetitle %}Rigo [Rodrigo Neri]{% endblock %}</title>
+  <title>{% block pagetitle %}Gordon Koo{% endblock %}</title>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   {% if RSS_FEED_ENABLED %}
   <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ RSS_FEED_URL }}" />
@@ -16,23 +16,26 @@
   {% else %}
   <link rel="stylesheet" href="{{ MEDIA_URL }}css/styles-{{ COMPRESS_REVISION_NUMBER }}.min.css" type="text/css" media="screen, projection">
   {% endif %}
+  <link rel="icon" type="image/png" href="{{ MEDIA_URL }}imgs/favicon.png">
 </head>
 <body>
 <header class="main-header">
   <hgroup>
     <div class="picture">
-      <a href="/" rel="home"></a>
+      <a href="/" rel="home"><img src="/static/imgs/pic.png"></a>
     </div>
-    <h1>Rodrigo Neri</h1>
-    <h2>iOS & Web Developer + Designer + Entrepreneur Co-Founder of <a href="http://instin.com">Instin</a></h2>
+    <h1>Gordon Koo</h1>
+    <h2>Software engineer.</h2>
+    <h2>A musician on the side.</h2>
+    <h2>And mostly human.</h2>
   </hgroup>
   <nav>
     <ul class="main-nav">
       <li><a href="/" id="home-link">Home</a></li>
       <li><a href="http://twitter.com/#!/superkerplunk" id="twitter-link">Twitter</a></li>
       <li><a href="http://github.com/gkoo" id="github-link">Github</a></li>
-      <li><a href="http://instagr.am/p/Lau1VrEPbt" id="instagram-link">Instagram</a></li>
       {% comment %}
+      <li><a href="http://instagr.am/p/Lau1VrEPbt" id="instagram-link">Instagram</a></li>
       <li><a href="http://dribbble.com/rigoneri" id="dribbble-link">Dribbble</a></li>
       <li><a href="http://lastfm.com/user/rigoneri" id="lastfm-link">Last.fm</a></li>
       <li><a href="https://foursquare.com/user/8786308" id="foursquare-link">Foursquare</a></li>
@@ -43,7 +46,9 @@
       {% endcomment %}
     </ul>
   </nav>
+  {% comment %}
   <a href="https://github.com/rigoneri/syte" class="fork-me">Fork me on Github</a>
+  {% endcomment %}
 </header>
 {% block main_section %}{% endblock %}
 <div class="mobile-nav">
@@ -52,7 +57,7 @@
     <span class="nav-btn-bar"></span>
     <span class="nav-btn-bar"></span>
   </span>
-  <h3><a href="/">rigoneri.com</a></h3>
+  <h3><a href="/">gordonkoo.com</a></h3>
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">

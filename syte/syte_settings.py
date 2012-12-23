@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 DEPLOYMENT_MODE = 'prod'
-COMPRESS_REVISION_NUMBER = '1.0'
+COMPRESS_REVISION_NUMBER = '1.1'
 
-BLOG_PLATFORM = '["wordpress" or "tumblr", without the double quotes]'
+BLOG_PLATFORM = 'wordpress'
 
 #Blog Integration: Tumblr
 TUMBLR_BLOG_URL = 'superkerplunk.tumblr.com'
@@ -11,11 +11,11 @@ TUMBLR_API_URL = 'http://api.tumblr.com/v2/blog/{0}'.format(TUMBLR_BLOG_URL)
 TUMBLR_API_KEY = 'uVOEfuZcwxkp6Mls4wP78t5DVicSTxtE5c50nLWHJZWHGAKk2P'
 
 #Blog Integration: Wordpress
-WORDPRESS_BLOG_URL = '[ENTER WORDPRESS BLOG URL] ex. gordonkoo.wordpress.com'
+WORDPRESS_BLOG_URL = 'gordonkoo.wordpress.com'
 WORDPRESS_API_URL = 'https://public-api.wordpress.com/rest/v1/sites/{0}'.format(WORDPRESS_BLOG_URL)
 
 #RSS Feed Integration: (by default use Tumbrl rss feed)
-RSS_FEED_ENABLED = True
+RSS_FEED_ENABLED = False
 RSS_FEED_URL = 'http://{0}/rss'.format(TUMBLR_BLOG_URL)
 
 #Twitter Integration
@@ -45,7 +45,7 @@ DRIBBBLE_API_URL = 'http://api.dribbble.com/players/'
 
 
 #Instagram Integration
-INSTAGRAM_INTEGRATION_ENABLED = False
+INSTAGRAM_INTEGRATION_ENABLED = True
 INSTAGRAM_API_URL = 'https://api.instagram.com/v1/'
 INSTAGRAM_ACCESS_TOKEN = '[ENTER INSTAGRAM ACCESS TOKEN HERE, SEE INSTAGRAM SETUP INSTRUCTIONS]'
 INSTAGRAM_USER_ID = '[ENTER INSTAGRAM USER_ID HERE, SEE INSTAGRAM SETUP INSTRUCTIONS]'
