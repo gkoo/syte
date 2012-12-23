@@ -43,7 +43,7 @@ if settings.DRIBBBLE_INTEGRATION_ENABLED:
         url(r'^dribbble/(?P<username>\w+)/?$', 'syte.views.dribbble.dribbble'),
     )
 
-#Instagram Integration
+#Foursquare Integration
 if settings.FOURSQUARE_OAUTH_ENABLED:
     urlpatterns += patterns('',
         url(r'^foursquare/auth/?$', 'syte.views.foursquare.foursquare_auth'),
@@ -54,7 +54,7 @@ if settings.FOURSQUARE_INTEGRATION_ENABLED:
         url(r'^foursquare/?$', 'syte.views.foursquare.foursquare'),
     )
 
-#Foursquare Integration
+#Instagram Integration
 if settings.INSTAGRAM_OAUTH_ENABLED:
     urlpatterns += patterns('',
         url(r'^instagram/auth/?$', 'syte.views.instagram.instagram_auth'),
