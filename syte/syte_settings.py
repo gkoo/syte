@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 DEPLOYMENT_MODE = 'prod'
-COMPRESS_REVISION_NUMBER = '1.3'
+COMPRESS_REVISION_NUMBER = '1.4'
 
 BLOG_PLATFORM = 'wordpress'
 
