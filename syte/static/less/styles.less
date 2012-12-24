@@ -103,18 +103,16 @@
     padding: 0;
 
     hgroup {
-      h2, h1 { .h1; line-height: 40px; margin: 50px 0 25px 0;}
+      padding-left: 34px;
+      padding-right: 35px;
+
+      h2, h1 { .h1; line-height: 40px; margin: 25px 0;}
       h2 a {
         border-bottom: 0;
         font-weight: 500;
       }
       h3 a {
-        display: none;
-      }
-      h3 a.adjusted {
         display: block;
-        position: absolute;
-        top: auto;
         width: 100%;
         margin-left: -34px;
         padding: 12px 35px;
@@ -134,10 +132,7 @@
     }
 
     article {
-      width: 700px;
       overflow: hidden;
-      line-height: 25px;
-      padding: 25px 35px 50px 34px;
       background-color: #fff;
 
       img {
@@ -151,6 +146,12 @@
         border-bottom: 0;
 
         &:hover img { border-color: @adjacent-color; }
+      }
+
+      .post-wrapper {
+        line-height: 25px;
+        margin: 25px 35px 50px 34px;
+        width: 700px;
       }
     }
 

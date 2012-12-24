@@ -49,7 +49,7 @@ function renderBlogPosts(posts) {
         });
 
         setupLinks();
-        adjustBlogHeaders();
+        //adjustBlogHeaders();
         prettyPrint();
         //setTimeout(setupBlogHeaderScroll, 1000);
         adjustSelection('home');
@@ -123,6 +123,7 @@ function fetchBlogPosts(offset, tag, platform) {
   }
 }
 
+/*
 function adjustBlogHeaders() {
   if(isMobileView)
     return;
@@ -134,7 +135,6 @@ function adjustBlogHeaders() {
   });
 }
 
-/*
 function setupBlogHeaderScroll() {
 
   if(isMobileView)
