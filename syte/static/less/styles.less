@@ -96,7 +96,7 @@
     position: relative;
     overflow: hidden;
     margin-left: 241px;
-    padding: 35px;
+    padding: 0;
 }
 
 .blog-section {
@@ -175,6 +175,17 @@
     }
 }
 
+.cover-photo {
+  background: #E9E9E9 url('/static/imgs/cover.jpg') 0 0;
+  height: 350px;
+  overflow: hidden;
+
+  img {
+    position: relative;
+    top: -100px;
+  }
+}
+
 .tags {
   list-style: none;
   margin: 0 0 10px 0;
@@ -232,6 +243,10 @@
 @media (max-width: 1024px), (max-height: 800px){
   header.main-header {
     hgroup .picture a, nav { margin-top: 30px; }
+  }
+
+  .cover-photo {
+    display: none;
   }
 }
 

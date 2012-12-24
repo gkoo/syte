@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% block main_section %}
-<section class="main-section blog-section" id="blog-posts">
-  <span class="loading">loading blog posts ...</span>
-</section>
+<div class="main-section">
+  <div class="cover-photo"><img src="{{ MEDIA_URL }}imgs/cover.jpg"></div>
+  <section class="blog-section" id="blog-posts">
+    <span class="loading">loading blog posts ...</span>
+  </section>
+</div>
 {% endblock %}
 {% block extra_inline_js %}
 

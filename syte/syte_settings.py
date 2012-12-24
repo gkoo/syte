@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 DEPLOYMENT_MODE = 'prod'
-COMPRESS_REVISION_NUMBER = '1.1'
+COMPRESS_REVISION_NUMBER = '1.2'
 
 BLOG_PLATFORM = 'wordpress'
 
@@ -82,8 +82,8 @@ WOOPRA_TRACKING_INCLUDE_QUERY = False
 
 
 #Disqus Integration
-DISQUS_INTEGRATION_ENABLED = False
-DISQUS_SHORTNAME = ''
+DISQUS_INTEGRATION_ENABLED = True
+DISQUS_SHORTNAME = 'gordonkoo'
 
 
 #Lastfm Integration

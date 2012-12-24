@@ -51,7 +51,7 @@ function renderBlogPosts(posts) {
         setupLinks();
         adjustBlogHeaders();
         prettyPrint();
-        setTimeout(setupBlogHeaderScroll, 1000);
+        //setTimeout(setupBlogHeaderScroll, 1000);
         adjustSelection('home');
 
         $('body').trigger("blog-post-loaded");
@@ -134,6 +134,7 @@ function adjustBlogHeaders() {
   });
 }
 
+/*
 function setupBlogHeaderScroll() {
 
   if(isMobileView)
@@ -208,5 +209,6 @@ function setupBlogHeaderScroll() {
     e.preventDefault();
   });
 
-  $window.scroll(processScroll).trigger("scroll");
+  //$window.scroll(processScroll).trigger("scroll");
 }
+*/
