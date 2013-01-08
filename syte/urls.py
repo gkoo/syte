@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^post/(?P<post_id>\w+)/?$', 'syte.views.blog.blog_post'),
     url(r'^tags/(?P<tag_slug>[\s\w\d-]+)/?$', 'syte.views.blog.blog_tags'),
     url(r'^blog.json/?$', 'syte.views.blog.blog'),
+    url(r'^shuttle/?$', 'syte.views.home.shuttle'),
     url(r'^about/?$', 'syte.views.home.home'),
     url(r'^/?$', 'syte.views.home.home'),
 )

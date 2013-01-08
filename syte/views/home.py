@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import Context, loader
 from django.http import HttpResponseServerError
 from django.views.decorators.cache import never_cache
@@ -20,6 +20,9 @@ def page_not_found_error(request, template_name='404.html'):
     t = loader.get_template(template_name)
     d = site_pages(request)
     return HttpResponseServerError(t.render(Context(d)))
+
+def shuttle(request):
+  return redirect('http://gkoo.github.com/shuttle')
 
 
 def home(request):
