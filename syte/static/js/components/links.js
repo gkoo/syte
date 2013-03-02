@@ -1,6 +1,6 @@
-var $url;
+var $url,
 
-var allComponents = [
+allComponents = [
   'instagram',
   'twitter',
   'github',
@@ -10,87 +10,108 @@ var allComponents = [
   //'bitbucket',
   //'foursquare',
   //'tent'
-];
+  'about'
+],
 
-currSelection = 'home';
+panels = {},
 
-function setupLinks() {
+currSelection = 'home',
 
-  $('header a').click(function(e) {
-      if (e.which == 2)
-          return;
-      e.preventDefault();
-      e.stopPropagation();
+setupLinks = function() {
+  $('header').click(function(e) {
+    var $target = $(e.target),
+        panel,
+        newSelection,
+        url;
 
-      if (this.href == $url)
-          return;
+    e.preventDefault();
+    newSelection = $target.attr('data-site'); // e.g. "instagram", "twitter", etc.
 
-      var url = $.url(this.href.replace('/#!', ''));
-      $url = this.href;
+    if (e.which === 2 || !$target.hasClass('nav-link') || currSelection === newSelection) {
+      return;
+    }
 
-      if (this.id == 'home-link' && window.location.pathname == '/') {
-        adjustSelection('home');
-      }
-      else if(this.id == 'instagram-link' && instagram_integration_enabled) {
-        adjustSelection('instagram', setupInstagram.bind(this, this));
-      }
-      else if (twitter_integration_enabled && (url.attr('host') == 'twitter.com' || url.attr('host') == 'www.twitter.com')) {
-        adjustSelection('twitter', setupTwitter.bind(this, url, this));
-      }
-      else if (github_integration_enabled && (url.attr('host') == 'github.com' || url.attr('host') == 'www.github.com')) {
-        adjustSelection('github', setupGithub.bind(this, url, this));
-      }
-      else if (dribbble_integration_enabled && (url.attr('host') == 'dribbble.com' || url.attr('host') == 'www.dribbble.com')) {
-        adjustSelection('dribbble', setupDribbble.bind(this, url, this));
-      }
-      else if (lastfm_integration_enabled && (url.attr('host') == 'lastfm.com' || url.attr('host') == 'www.lastfm.com')) {
-        adjustSelection('lastfm', setupLastfm.bind(this, url, this));
-      }
-      else if (soundcloud_integration_enabled && (url.attr('host') == 'soundcloud.com' || url.attr('host') == 'www.soundcloud.com')) {
-        adjustSelection('soundcloud', setupSoundcloud.bind(this, url, this));
-      }
-      else if (bitbucket_integration_enabled && (url.attr('host') == 'bitbucket.org' || url.attr('host') == 'www.bitbucket.org')) {
-        adjustSelection('bitbucket', setupBitbucket.bind(this, url, this));
-      }
-      else if(this.id == 'foursquare-link' && foursquare_integration_enabled) {
-        adjustSelection('foursquare', setupFoursquare.bind(this, this));
-      }
-      else if(this.id == 'tent-link' && tent_integration_enabled) {
-        adjustSelection('tent', setupTent.bind(this, this));
-      }
-      else {
-        window.location = this.href;
-      }
-  });
-}
+    currSelection = newSelection;
 
-function adjustSelection(component, callback) {
-  var transition,
-      $currProfileEl;
+    panel = panels[currSelection]; // holds the Panel object for this site.
 
-  if (currSelection !== 'home') {
-    $currProfileEl = $('#' + currSelection + '-profile');
-    transition = $.support.transition && $currProfileEl.hasClass('fade'),
-    $currProfileEl.modal('hide');
-    if (callback) {
-      if (transition) {
-        $currProfileEl.one($.support.transition.end, callback);
+    adjustSelection(currSelection);
+    if (panel) {
+      panel.show();
+    }
+    else {
+      if($target.attr('id') === 'twitter-link' && twitter_integration_enabled) {
+        panels.twitter = new TwitterPanel($target);
       }
-      else {
-        callback();
+      else if($target.attr('id') === 'github-link' && github_integration_enabled) {
+        panels.github = new GithubPanel($target);
+      }
+      else if($target.attr('id') === 'instagram-link' && instagram_integration_enabled) {
+        panels.instagram = new InstagramPanel($target);
       }
     }
-  }
-  else if (callback) {
-    callback();
+
+    /*
+    return;
+    if (this.id === 'home-link' && window.location.pathname === '/') {
+      adjustSelection('home');
+    }
+    else if(this.id === 'instagram-link' && instagram_integration_enabled) {
+      adjustSelection('instagram');
+      //panels.instagram = setupInstagram(this);
+    }
+    else if (twitter_integration_enabled && (url.attr('host') === 'twitter.com' || url.attr('host') === 'www.twitter.com')) {
+      adjustSelection('twitter');
+      setupTwitter(url, this);
+    }
+    else if (github_integration_enabled && (url.attr('host') === 'github.com' || url.attr('host') === 'www.github.com')) {
+      adjustSelection('github');
+      setupGithub(url, this);
+    }
+    else if (dribbble_integration_enabled && (url.attr('host') === 'dribbble.com' || url.attr('host') === 'www.dribbble.com')) {
+      adjustSelection('dribbble');
+      setupDribbble(url, this);
+    }
+    else if (lastfm_integration_enabled && (url.attr('host') === 'lastfm.com' || url.attr('host') === 'www.lastfm.com')) {
+      adjustSelection('lastfm');
+      setupLastfm(url, this);
+    }
+    else if (soundcloud_integration_enabled && (url.attr('host') === 'soundcloud.com' || url.attr('host') === 'www.soundcloud.com')) {
+      adjustSelection('soundcloud');
+      setupSoundcloud(url, this);
+    }
+    else if (bitbucket_integration_enabled && (url.attr('host') === 'bitbucket.org' || url.attr('host') === 'www.bitbucket.org')) {
+      adjustSelection('bitbucket');
+      setupBitbucket(url, this);
+    }
+    else if(this.id === 'foursquare-link' && foursquare_integration_enabled) {
+      adjustSelection('foursquare');
+      setupFoursquare(this);
+    }
+    else if(this.id === 'tent-link' && tent_integration_enabled) {
+      adjustSelection('tent');
+      setupTent(this);
+    }
+    else {
+      window.location = this.href;
+    }
+    */
+  });
+},
+
+adjustSelection = function(component) {
+  var panel;
+  //$('.modal-backdrop').hide();
+
+  for (p in panels) {
+    if (p !== component) {
+      panel = panels[p];
+      panel.hide();
+    }
   }
 
   $('.main-nav').children('li').removeClass('sel');
   $('#' + component + '-link').parent().addClass('sel');
 
-  if (component == 'home')
-    $url = null;
-
   currSelection = component;
-}
-
+};

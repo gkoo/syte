@@ -31,18 +31,19 @@
   </hgroup>
   <nav>
     <ul class="main-nav">
-      <li><a href="/" id="home-link">Home</a></li>
-      <li><a href="http://twitter.com/#!/superkerplunk" id="twitter-link">Twitter</a></li>
-      <li><a href="http://github.com/gkoo" id="github-link">Github</a></li>
-      <li><a href="http://instagram.com/superkerplunk" id="instagram-link">Instagram</a></li>
+      <li><a href="/" id="home-link" class="nav-link">Home</a></li>
+      <li><a href="http://twitter.com/#!/superkerplunk" data-site="twitter" id="twitter" class="nav-link">Twitter</a></li>
+      <li><a href="http://github.com/gkoo" data-site="github" id="github-link" class="nav-link">Github</a></li>
+      <li><a href="http://instagram.com/superkerplunk" data-site="instagram" id="instagram-link" class="nav-link">Instagram</a></li>
+      <li><a href="#" id="about-link" class="nav-link">About</a></li>
       {% comment %}
-      <li><a href="http://dribbble.com/rigoneri" id="dribbble-link">Dribbble</a></li>
-      <li><a href="http://lastfm.com/user/rigoneri" id="lastfm-link">Last.fm</a></li>
-      <li><a href="https://foursquare.com/user/8786308" id="foursquare-link">Foursquare</a></li>
-      <li><a href="http://tent.henklein.com" id="tent-link">Tent.io</a></li>
-      <li><a href="http://soundcloud.com/guram-kajaia" id="soundcloud-link">Soundcloud</a></li>
-      <li><a href="http://bitbucket.org/rigoneri" id="bitbucket-link">Bitbucket</a></li>
-      <li><a href="mailto:contact@rigoneri.com?subject=Hello" id="contact-link">Contact</a></li>
+      <li><a href="http://dribbble.com/rigoneri" id="dribbble-link" class="nav-link">Dribbble</a></li>
+      <li><a href="http://lastfm.com/user/rigoneri" id="lastfm-link" class="nav-link">Last.fm</a></li>
+      <li><a href="https://foursquare.com/user/8786308" id="foursquare-link" class="nav-link">Foursquare</a></li>
+      <li><a href="http://tent.henklein.com" id="tent-link" class="nav-link">Tent.io</a></li>
+      <li><a href="http://soundcloud.com/guram-kajaia" id="soundcloud-link" class="nav-link">Soundcloud</a></li>
+      <li><a href="http://bitbucket.org/rigoneri" id="bitbucket-link" class="nav-link">Bitbucket</a></li>
+      <li><a href="mailto:contact@rigoneri.com?subject=Hello" id="contact-link" class="nav-link">Contact</a></li>
       {% endcomment %}
     </ul>
   </nav>
@@ -96,8 +97,9 @@ var twitter_integration_enabled = {% if TWITTER_INTEGRATION_ENABLED %}true{% els
 
 <script src="{{ MEDIA_URL }}js/components/base.js"></script>
 <script src="{{ MEDIA_URL }}js/components/mobile.js"></script>
-<script src="{{ MEDIA_URL }}js/components/blog-posts.js"></script>
+<script src="{{ MEDIA_URL }}js/components/panel.js"></script>
 <script src="{{ MEDIA_URL }}js/components/links.js"></script>
+<script src="{{ MEDIA_URL }}js/components/blog-posts.js"></script>
 
 {% if TWITTER_INTEGRATION_ENABLED %}<script src="{{ MEDIA_URL }}js/components/twitter.js"></script>{% endif %}
 {% if GITHUB_INTEGRATION_ENABLED %}<script src="{{ MEDIA_URL }}js/components/github.js"></script>{% endif %}

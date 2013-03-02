@@ -1,29 +1,22 @@
+var InstagramPanel = function($linkEl) {
+  this.initialize($linkEl);
 
-function setupInstagram(el) {
-  var href = el.href;
+  this.fetchData = function() {
+    var _this = this;
 
-  if($('#instagram-profile').length > 0) {
-    window.location = href;
-    return;
-  }
-
-  var spinner = new Spinner(spin_opts).spin();
-  $('#instagram-link').append(spinner.el);
-
-  require(["json!/instagram/",
-          "text!templates/instagram-view.html",
-          "text!templates/instagram-view-more.html"],
-     function(instagram_data, instagram_view, instagram_view_more) {
-        var $modal;
-
+    require(["json!/instagram/",
+            "text!templates/instagram-view.html",
+            "text!templates/instagram-view-more.html"],
+      function(instagram_data, instagram_view, instagram_view_more) {
         if (instagram_data.media == 0){
-            window.location = href;
-            return;
+          window.location = href;
+          return;
         }
 
-        var template = Handlebars.compile(instagram_view);
+        var template = Handlebars.compile(instagram_view),
+            moreTemplate,
+            user_counts = instagram_data.user['counts'];
 
-        var user_counts = instagram_data.user['counts'];
         user_counts.media = numberWithCommas(user_counts.media);
         user_counts.followed_by = numberWithCommas(user_counts.followed_by);
         user_counts.follows = numberWithCommas(user_counts.follows);
@@ -32,16 +25,13 @@ function setupInstagram(el) {
            p.formated_date = moment.unix(parseInt(p.created_time)).fromNow();
         });
 
-        $modal = $(template(instagram_data)).modal().on('hidden', function () {
-            $(this).remove();
-            if (currSelection === 'instagram') {
-              adjustSelection('home');
-            }
-        });
+        _this.$modal = $(template(instagram_data)).modal();
+        _this.setupModal(_this.$modal);
+        _this.showing = true;
 
-        var more_template = Handlebars.compile(instagram_view_more);
+        moreTemplate = Handlebars.compile(instagram_view_more);
 
-        $modal.find('#load-more-pics').click(function(e) {
+        $('#load-more-pics').click(function(e) {
           next = $(this).attr('data-control-next');
 
           var spinner = new Spinner(spin_opts).spin();
@@ -60,11 +50,15 @@ function setupInstagram(el) {
             else
                $('#load-more-pics').remove();
 
-            spinner.stop();
+            _this.linkSpinner.stop();
           });
+        });
 
-        })
+        _this.linkSpinner.stop();
+      });
+  };
 
-        spinner.stop();
-     });
-}
+  this.fetchData();
+};
+
+InstagramPanel.prototype = basePanel;
